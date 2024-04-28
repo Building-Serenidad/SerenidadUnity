@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Surfer.unity
-    guid: 204915e6792134526877a868d8599d1f
   - enabled: 1
     path: Assets/Scenes/Serenidad.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Surfer.unity
+    guid: 204915e6792134526877a868d8599d1f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: cf1cf1f0da0a4479fa02e95309417bf2, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5c72bc3d9befc4ec7a3ec1e4aeccd17b, type: 2}
