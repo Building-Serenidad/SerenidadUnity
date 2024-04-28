@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Surfer.unity
+    guid: 204915e6792134526877a868d8599d1f
+  - enabled: 1
+    path: Assets/Scenes/Serenidad.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

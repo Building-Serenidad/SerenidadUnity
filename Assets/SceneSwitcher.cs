@@ -48,9 +48,9 @@ public class FetchData : MonoBehaviour
             string sceneType = data[0]["type"];
             SceneManager.LoadScene(sceneType);
         }
-        else
-        {
-            Debug.Log("Received empty list, no action taken.");
-        }
+        //else
+        //{
+        //    Debug.Log("Received empty list, no action taken.");
+        //}
     }
 }
