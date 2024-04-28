@@ -13,35 +13,36 @@ public class MessageReceiver : MonoBehaviour
 
     private string lastData;
 
-    IEnumerator Start()
+    void Start()
     {
-        while (true)
-        {
-            yield return StartCoroutine(FetchMessages());
-            yield return new WaitForSeconds(1f); // Fetch messages every second
-        }
+        StartCoroutine(FetchMessages());
     }
 
     IEnumerator FetchMessages()
     {
-        UnityWebRequest request = UnityWebRequest.Get("https://www.deet.live/getMessages");
-
-        yield return request.SendWebRequest();
-
-        if (request.result == UnityWebRequest.Result.Success)
+        while (true)
         {
-            string data = request.downloadHandler.text;
+            UnityWebRequest request = UnityWebRequest.Get("https://www.deet.live/getMessages");
 
-            if (data != lastData)
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
             {
-                lastData = data;
-                UpdateMessagesDisplay(data);
-                PlayNotificationSound();
+                string data = request.downloadHandler.text;
+
+                if (data != lastData)
+                {
+                    lastData = data;
+                    UpdateMessagesDisplay(data);
+                    PlayNotificationSound();
+                }
             }
-        }
-        else
-        {
-            Debug.LogError("Error fetching messages: " + request.error);
+            else
+            {
+                Debug.LogError("Error fetching messages: " + request.error);
+            }
+
+            yield return new WaitForSeconds(1f); // Fetch messages every second
         }
     }
 
@@ -52,8 +53,9 @@ public class MessageReceiver : MonoBehaviour
 
         if (parsedData != null && parsedData.IsArray)
         {
-            foreach (JSONNode messageNode in parsedData)
+            for (int i = parsedData.Count - 1; i >= 0; i--)
             {
+                JSONNode messageNode = parsedData[i];
                 string sender = messageNode["sender"];
                 string message = messageNode["message"];
                 displayText += sender + ": " + message + "\n";
